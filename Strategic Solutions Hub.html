@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+ <html lang="en">
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Strategic Solutions Hub</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+     <style>
+         body {
+             font-family: 'Inter', sans-serif;
+             background-color: #FDFBF8; /* Warm off-white */
+         }
+         .nav-link {
+             transition: color 0.3s, border-bottom-color 0.3s;
+         }
+         .nav-link.active {
+             color: #145A5E; /* Muted Teal */
+             border-bottom-color: #145A5E;
+         }
+         .tab.active {
+             background-color: #145A5E;
+             color: #FFFFFF;
+         }
+         .tab-content {
+             display: none;
+         }
+         .tab-content.active {
+             display: block;
+         }
+         .process-step {
+             position: relative;
+             padding-left: 2.5rem;
+         }
+         .process-step:not(:last-child)::before {
+             content: '';
+             position: absolute;
+             left: 1.125rem;
+             top: 2rem;
+             bottom: -1rem;
+             width: 2px;
+             background-color: #D1D5DB; /* Gray-300 */
+         }
+         .process-step-number {
+             position: absolute;
+             left: 0;
+             top: 0;
+             width: 2.25rem;
+             height: 2.25rem;
+             display: flex;
+             align-items: center;
+             justify-content: center;
+             border-radius: 9999px;
+             background-color: #145A5E;
+             color: #FFFFFF;
+             font-weight: 600;
+         }
+         .chart-container {
+             position: relative;
+             width: 100%;
+             max-width: 800px;
+             margin-left: auto;
+             margin-right: auto;
+             height: 400px;
+         }
+         @media (min-width: 768px) {
+             .chart-container {
+                 height: 500px;
+             }
+         }
+     </style>
+ </head>
+ <body>
+ 
+     <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+             <div class="flex items-center justify-between h-16">
+                 <div class="flex items-center">
+                     <span class="text-2xl font-bold text-[#145A5E]">Strategic Solutions Hub</span>
+                 </div>
+                 <div class="hidden md:block">
+                     <div class="ml-10 flex items-baseline space-x-4">
+                         <a href="#overview" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#145A5E] border-b-2 border-transparent">Overview</a>
+                         <a href="#blueprint" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#145A5E] border-b-2 border-transparent">The Blueprint</a>
+                         <a href="#commercials" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#145A5E] border-b-2 border-transparent">Commercial Models</a>
+                         <a href="#offerings" class="nav-link px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#145A5E] border-b-2 border-transparent">Client Offerings</a>
+                     </div>
+                 </div>
+             </div>
+         </nav>
+     </header>
+ 
+     <main>
+         <section id="overview" class="py-16 sm:py-24 bg-white">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                 <h1 class="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">A Low-Risk, High-Reward Innovation Lab</h1>
+                 <p class="mt-6 max-w-2xl mx-auto text-lg text-gray-600">The Strategic Solutions Hub provides a dedicated environment for clients to rapidly prototype, test, and refine process improvements, automation initiatives, and emerging technology solutions (particularly AI) before full-scale deployment in their wider operations.</p>
+ 
+                 <div class="mt-12">
+                     <h2 class="text-3xl font-bold text-gray-900 mb-8">Client Value Proposition</h2>
+                     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 text-left">
+                         <div class="bg-[#FDFBF8] p-6 rounded-lg shadow-sm">
+                             <h3 class="text-lg font-semibold text-[#145A5E]">Reduced Risk</h3>
+                             <p class="mt-2 text-gray-600">Clients can experiment with new technologies and processes without disrupting live operations. Failures are learning opportunities, not costly setbacks.</p>
+                         </div>
+                         <div class="bg-[#FDFBF8] p-6 rounded-lg shadow-sm">
+                             <h3 class="text-lg font-semibold text-[#145A5E]">Accelerated Innovation & Competitive Advantage</h3>
+                             <p class="mt-2 text-gray-600">The Strategic Solutions Hub provides a streamlined path from ideation to pilot, shortening the time-to-value for new solutions. Faster adoption of cutting-edge technologies and processes gives clients a leg up on the competition.</p>
+                         </div>
+                         <div class="bg-[#FDFBF8] p-6 rounded-lg shadow-sm">
+                             <h3 class="text-lg font-semibold text-[#145A5E]">Expert Guidance & Custom Solutions</h3>
+                             <p class="mt-2 text-gray-600">Clients gain access to your specialized expertise in process improvement and emerging tech. The Strategic Solutions Hub focuses on solutions tailored to the client's specific strategic needs and operational challenges.</p>
+                         </div>
+                         <div class="bg-[#FDFBF8] p-6 rounded-lg shadow-sm">
+                             <h3 class="text-lg font-semibold text-[#145A5E]">Improved ROI</h3>
+                             <p class="mt-2 text-gray-600">By optimizing solutions in a controlled environment, clients maximize the return on their investments in innovation.</p>
+                         </div>
+                          <div class="bg-[#FDFBF8] p-6 rounded-lg shadow-sm">
+                             <h3 class="text-lg font-semibold text-[#145A5E]">Access to Specialized Talent</h3>
+                             <p class="mt-2 text-gray-600">Clients gain access to specialized talent.</p>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <section id="blueprint" class="py-16 sm:py-24">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                     <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">The Strategic Solutions Hub Blueprint</h2>
+                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Explore the structure, focus areas, team, and implementation pathway of the Strategic Solutions Hub.</p>
+                 </div>
+ 
+                 <div class="mt-16 space-y-16">
+                     <div>
+                         <h3 class="text-2xl font-bold text-center mb-8">Core Functions: Design, Test, Build</h3>
+                         <div class="flex flex-col md:flex-row items-center justify-center gap-8 text-center">
+                             <div class="p-6 rounded-lg bg-white shadow-md flex-1">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">1. Design</h4>
+                                 <p class="mt-2 text-gray-600">Collaboratively identify pain points, define project scope, and design potential solutions through needs assessments and feasibility studies.</p>
+                             </div>
+                             <div class="text-2xl font-bold text-gray-400 mx-4">→</div>
+                              <div class="p-6 rounded-lg bg-white shadow-md flex-1">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">2. Test</h4>
+                                 <p class="mt-2 text-gray-600">Build and rigorously test prototypes and pilot projects in a controlled environment, using data to iterate and refine solutions.</p>
+                             </div>
+                             <div class="text-2xl font-bold text-gray-400 mx-4">→</div>
+                              <div class="p-6 rounded-lg bg-white shadow-md flex-1">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">3. Build</h4>
+                                 <p class="mt-2 text-gray-600">Develop fully functional, scalable solutions ready for deployment with robust development and integration planning.</p>
+                             </div>
+                         </div>
+                     </div>
+ 
+                     <div class="mt-16">
+                         <h3 class="text-2xl font-bold text-center mb-8">Focus Areas</h3>
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                             <div class="p-6 rounded-lg bg-white shadow-md">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">Process Improvement and Innovation</h4>
+                                 <ul class="mt-2 text-gray-600 list-disc list-inside space-y-1">
+                                     <li>Workflow Optimization: Identify and eliminate bottlenecks in existing processes.</li>
+                                     <li>Automation Opportunities: Identify tasks that can be automated using RPA, AI, or other technologies.</li>
+                                     <li>Process Redesign: Develop entirely new, more efficient ways of working.</li>
+                                 </ul>
+                             </div>
+                             <div class="p-6 rounded-lg bg-white shadow-md">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">New and Emerging Technology Solutions</h4>
+                                 <ul class="mt-2 text-gray-600 list-disc list-inside space-y-1">
+                                     <li>AI/Machine Learning: Explore applications of AI, using our Transcom Product Portfolio, and in partnership with T:Labs.</li>
+                                     <li>Other Emerging Tech: Stay abreast of other relevant technologies and assess their potential for the client.</li>
+                                     <li>Technology Scouting: Actively research and evaluate new technologies as they emerge.</li>
+                                 </ul>
+                             </div>
+                             <div class="p-6 rounded-lg bg-white shadow-md col-span-1 md:col-span-2">
+                                 <h4 class="text-xl font-semibold text-[#145A5E]">Operationalization of Client Strategy (Incubation Projects)</h4>
+                                 <p class="mt-2 text-gray-600">These are the core projects undertaken within the Strategic Solutions Hub. They should be:</p>
+                                 <ul class="mt-2 text-gray-600 list-disc list-inside space-y-1">
+                                     <li>People-Focused: Consider the impact on the client's workforce and ensure solutions are user-friendly.</li>
+                                     <li>Technology-Enabled: Leverage technology to achieve the desired outcomes.</li>
+                                     <li>Strategically Aligned: Directly address the client's key business objectives and challenges.</li>
+                                     <li>Measurable: Define clear metrics to track the success of each project.</li>
+                                 </ul>
+                             </div>
+                         </div>
+                     </div>
+ 
+                     <div class="mt-16">
+                          <h3 class="text-2xl font-bold text-center mb-8">Implementation Steps</h3>
+                          <div class="max-w-3xl mx-auto">
+                             <div class="space-y-8">
+                                 <div class="process-step">
+                                     <div class="process-step-number">1</div>
+                                     <h4 class="text-lg font-semibold">Client Selection & Needs Assessment Workshop</h4>
+                                     <p class="text-gray-600">Identify top global clients who are strategically aligned with your Strategic Solutions Hub's focus areas and have a demonstrated commitment to innovation. Conduct a workshop with the selected client to understand their challenges, priorities, and desired outcomes.</p>
+                                 </div>
+                                 <div class="process-step">
+                                     <div class="process-step-number">2</div>
+                                     <h4 class="text-lg font-semibold">Strategic Solutions Hub Proposal & Contracting</h4>
+                                     <p class="text-gray-600">Develop a customized proposal outlining the Strategic Solutions Hub's structure, team, focus areas, and proposed projects. Establish a clear contract outlining the scope of work, deliverables, intellectual property ownership, and pricing.</p>
+                                 </div>
+                                 <div class="process-step">
+                                     <div class="process-step-number">3</div>
+                                     <h4 class="text-lg font-semibold">Infrastructure Setup & Project Initiation</h4>
+                                     <p class="text-gray-600">Establish the physical or virtual environment for the Strategic Solutions Hub, including necessary hardware, software, and tools. Kick off the first incubation projects, following the Design-Test-Build methodology.</p>
+                                 </div>
+                                 <div class="process-step">
+                                     <div class="process-step-number">4</div>
+                                     <h4 class="text-lg font-semibold">Continuous Improvement & Internal Marketing</h4>
+                                     <p class="text-gray-600">Regularly review and refine the Strategic Solutions Hub's processes and capabilities based on feedback and results. Publicize the service internally and educate sales teams.</p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <section id="commercials" class="py-16 sm:py-24 bg-white">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                 <div class="text-center">
+                     <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Commercial Models</h2>
+                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">We offer flexible commercial models to suit different client needs and risk appetites. Explore the options to find the best fit for your innovation goals.</p>
+                 </div>
+ 
+                 <div class="mt-12 max-w-4xl mx-auto">
+                     <div id="commercials-tabs" class="flex flex-wrap justify-center gap-2 mb-8">
+                         <button data-tab="tiered" class="tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-200 text-gray-700">Tiered Subscription</button>
+                         <button data-tab="gain-sharing" class="tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-200 text-gray-700">Gain-Sharing</button>
+                         <button data-tab="co-investment" class="tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-200 text-gray-700">Co-Investment</button>
+                         <button data-tab="innovation-fund" class="tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-200 text-gray-700">Innovation Fund</button>
+                         <button data-tab="outcome-based" class="tab px-4 py-2 text-sm font-semibold rounded-full bg-gray-200 text-gray-700">Outcome-Based</button>
+                     </div>
+ 
+                     <div id="commercials-content" class="bg-[#FDFBF8] p-8 rounded-lg shadow-inner">
+                         <div data-tab="tiered" class="tab-content">
+                             <h3 class="text-xl font-bold text-[#145A5E]">Tiered Access & Subscription Model (with "Freemium" Option)</h3>
+                             <p class="mt-2 text-gray-600">Offer a limited "taste" of the Strategic Solutions Hub. This could include: access to thought leadership content (white papers, webinars, industry reports), participation in general Strategic Solutions Hub workshops/webinars, a one-time, high-level assessment of a specific process area (but not a full project), and access to a limited online knowledge base/community. The purpose is to generate leads, demonstrate expertise, and build relationships, serving as a low-risk entry point.</p>
+                             <p class="mt-2 text-gray-600">A monthly or annual subscription fee provides access to a defined number of "innovation credits" or hours per year, and participation in a set number of smaller-scale "incubation projects". The purpose is to provide ongoing value and build a recurring revenue stream, priced attractively below perceived value.</p>
+                             <p class="mt-2 text-gray-600">A higher subscription fee unlocks unlimited "innovation credits" or a significantly larger allocation, priority access to the Strategic Solutions Hub team, larger, more complex, and strategically important projects, and dedicated resources (e.g., a specific data scientist or engineer assigned part-time). The purpose is to cater to clients with significant innovation needs and a higher willingness to invest.</p>
+                             <p class="mt-2 text-gray-600">For projects exceeding allocated credits/hours, charge additional fees based on scope and complexity, with transparency about these costs. This allows for flexibility and ensures compensation for larger engagements.</p>
+                         </div>
+                         <div data-tab="gain-sharing" class="tab-content">
+                              <h3 class="text-xl font-bold text-[#145A5E]">Gain-Sharing Model (Performance-Based)</h3>
+                             <p class="mt-2 text-gray-600">You agree with the client on specific, measurable KPIs that the Strategic Solutions Hub projects will impact (e.g., cost reduction, efficiency gains, revenue increase). A percentage of the achieved improvement (the "gain") is shared with your organization. For example, if the Strategic Solutions Hub helps the client reduce operational costs by $1 million, and the gain-sharing agreement is 20%, you receive $200,000.</p>
+                              <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                 <div><strong class="text-gray-800">Pros:</strong> Strongly aligns incentives; you're directly rewarded for delivering tangible results. Clients see a clear path to ROI, making them more willing to invest. Can be very profitable if projects are successful.</div>
+                                 <div><strong class="text-gray-800">Cons:</strong> Requires careful negotiation of KPIs and measurement methodology upfront. Requires a high degree of trust and transparency. Your revenue is dependent on the client's success in implementing the Strategic Solutions Hub's recommendations. Measurement attribution can be complex.</div>
+                             </div>
+                             <h4 class="text-lg font-semibold mt-6 mb-4">Project Process Flow:</h4>
+                             <div class="space-y-4 text-sm">
+                                 <p><strong>1. Engagement & KPI Definition:</strong> Identify opportunity and agree on measurable KPIs that the Strategic Solutions Hub projects will impact, and the gain-sharing percentage.</p>
+                                 <p><strong>2. Contracting:</strong> Formalize KPIs, measurement methodology, and terms in a legal agreement.</p>
+                                 <p><strong>3. Project Execution:</strong> The Strategic Solutions Hub implements the solution to impact the defined KPIs.</p>
+                                 <p><strong>4. Performance Measurement:</strong> Post-implementation, monitor KPIs and calculate the value of the gains.</p>
+                                 <p><strong>5. Verification & Reward:</strong> Present gains to the client for verification, then invoice for the shared percentage.</p>
+                             </div>
+                         </div>
+                         <div data-tab="co-investment" class="tab-content">
+                             <h3 class="text-xl font-bold text-[#145A5E]">Co-Investment Model (Shared Risk, Shared Reward)</h3>
+                             <p class="mt-2 text-gray-600">You and the client jointly invest in the Strategic Solutions Hub's infrastructure and project costs. This could be a 50/50 split, or any other agreed-upon ratio. Both parties share in the benefits (e.g., IP ownership, cost savings, revenue generated).</p>
+                              <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                 <div><strong class="text-gray-800">Pros:</strong> Demonstrates your commitment and "skin in the game". Reduces the client's upfront financial burden. Fosters a deeper partnership.</div>
+                                 <div><strong class="text-gray-800">Cons:</strong> Requires a higher level of trust and collaboration. Can be more complex to structure legally and operationally. You share the risk if projects are unsuccessful.</div>
+                             </div>
+                         </div>
+                         <div data-tab="innovation-fund" class="tab-content">
+                             <h3 class="text-xl font-bold text-[#145A5E]">"Innovation Fund" Model (Client-Funded, with Governance)</h3>
+                             <p class="mt-2 text-gray-600">The client establishes a dedicated "innovation fund" managed by the Strategic Solutions Hub. The Strategic Solutions Hub proposes projects to be funded from this pool, and the client approves them based on strategic alignment and potential ROI.</p>
+                             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                 <div><strong class="text-gray-800">Pros:</strong> Gives the client control over how their funds are used. Clearly separates Strategic Solutions Hub funding from other operational expenses. Facilitates long-term planning and budgeting for innovation.</div>
+                                 <div><strong class="text-gray-800">Cons:</strong> Requires the client to commit a significant amount of capital upfront. You need a robust project selection and governance process to ensure the fund is used effectively.</div>
+                             </div>
+                         </div>
+                          <div data-tab="outcome-based" class="tab-content">
+                             <h3 class="text-xl font-bold text-[#145A5E]">Outcome-Based Pricing (Fixed Fee for Defined Outcomes)</h3>
+                             <p class="mt-2 text-gray-600">Instead of hourly rates or project-based fees, charge a fixed price for achieving a pre-defined, measurable outcome. Example: "We will reduce your customer service call handling time by 15% for a fixed fee of $X".</p>
+                             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+                                 <div><strong class="text-gray-800">Pros:</strong> Provides price certainty for the client. Focuses on delivering value, not just effort.</div>
+                                 <div><strong class="text-gray-800">Cons:</strong> Requires a very precise understanding of the problem and the solution. You bear the risk if the project takes longer or is more complex than anticipated.</div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+         <section id="offerings" class="py-16 sm:py-24">
+             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                  <div class="text-center">
+                     <h2 class="text-3xl font-extrabold text-gray-900 sm:text-4xl">Offerings for Prospective Clients</h2>
+                     <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">Engage with our Strategic Solutions Hub through offerings designed to demonstrate value and build trust with minimal initial commitment.</p>
+                 </div>
+                 <div class="mt-12 grid grid-cols-1 md:grid-cols-2 gap-8">
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                         <h3 class="text-xl font-bold text-[#145A5E]">Enhanced "Champion-Challenger"</h3>
+                         <p class="mt-2 text-gray-600">A low-risk trial where our CoE team (the "Challenger") replicates a portion of a prospect's operations to compete against their current setup (the "Champion"). If we meet or exceed pre-defined success criteria in a set timeframe, the prospect commits to scaling with us. This is a powerful, data-driven way to prove our value.</p>
+                     </div>
+                      <div class="bg-white p-8 rounded-lg shadow-md">
+                         <h3 class="text-xl font-bold text-[#145A5E]">CoE "Diagnostic" Assessments</h3>
+                         <p class="mt-2 text-gray-600">A free or low-cost, focused assessment of a specific operational area. We use our CoE capabilities to analyze workflows, audit technology, and analyze data, delivering a report with findings and potential ROI. It's a valuable deliverable even without a larger contract.</p>
+                     </div>
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                         <h3 class="text-xl font-bold text-[#145A5E]">CoE "Showcases" & Demonstrations</h3>
+                         <p class="mt-2 text-gray-600">Instead of generic demos, we create highly targeted demonstrations within the CoE that address a prospect's specific pain points; including "Day in the Life" simulations of their workload.</p>
+                     </div>
+                     <div class="bg-white p-8 rounded-lg shadow-md">
+                         <h3 class="text-xl font-bold text-[#145A5E]">CoE "Innovation Sprints"</h3>
+                         <p class="mt-2 text-gray-600">Short, focused 1-2 week engagements to solve a specific problem. Working collaboratively with the prospect's team, we deliver a tangible output like a prototype or proof-of-concept.</p>
+                     </div>
+                 </div>
+             </div>
+         </section>
+ 
+     </main>
+ 
+     <footer class="bg-gray-800">
+         <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-gray-400 text-sm">
+             <p>Strategic Solutions Hub Interactive Blueprint</p>
+         </div>
+     </footer>
+ 
+     <script>
+         document.addEventListener('DOMContentLoaded', function() {
+             // Navigation scroll behavior
+             const navLinks = document.querySelectorAll('.nav-link');
+             const sections = document.querySelectorAll('main section');
+ 
+             const observerOptions = {
+                 root: null,
+                 rootMargin: '0px',
+                 threshold: 0.4
+             };
+ 
+             const sectionObserver = new IntersectionObserver((entries, observer) => {
+                 entries.forEach(entry => {
+                     if (entry.isIntersecting) {
+                         navLinks.forEach(link => {
+                             link.classList.remove('active');
+                             if (link.getAttribute('href').substring(1) === entry.target.id) {
+                                 link.classList.add('active');
+                             }
+                         });
+                     }
+                 });
+             }, observerOptions);
+ 
+             sections.forEach(section => {
+                 sectionObserver.observe(section);
+             });
+ 
+             navLinks.forEach(anchor => {
+                 anchor.addEventListener('click', function (e) {
+                     e.preventDefault();
+                     document.querySelector(this.getAttribute('href')).scrollIntoView({
+                         behavior: 'smooth'
+                     });
+                 });
+             });
+ 
+             // Tabs functionality
+             function setupTabs(containerId) {
+                 const tabContainer = document.getElementById(containerId);
+                 if (!tabContainer) return;
+ 
+                 const tabs = tabContainer.querySelectorAll('.tab');
+                 const contentContainer = document.getElementById(tabContainer.id.replace('-tabs', '-content'));
+                 if (!contentContainer) return;
+ 
+                 const tabContents = contentContainer.querySelectorAll('.tab-content');
+ 
+                 function activateTab(tabId) {
+                     tabs.forEach(tab => {
+                         tab.classList.toggle('active', tab.dataset.tab === tabId);
+                     });
+                     tabContents.forEach(content => {
+                         content.classList.toggle('active', content.dataset.tab === tabId);
+                     });
+                 }
+ 
+                 // Set initial active tab
+                 if (tabs.length > 0) {
+                    activateTab(tabs[1].dataset.tab); // Default to gain-sharing
+                 }
+ 
+                 tabs.forEach(tab => {
+                     tab.addEventListener('click', () => {
+                         activateTab(tab.dataset.tab);
+                     });
+                 });
+             }
+ 
+             setupTabs('commercials-tabs');
+ 
+         });
+     </script>
+ 
+ </body>
+ </html>
